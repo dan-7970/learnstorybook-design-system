@@ -5,6 +5,14 @@ import { Avatar } from "./Avatar";
 export default {
   title: "Design System/Avatar",
   component: Avatar,
+  argTypes: {
+    size: {
+      control: {
+        type: 'select'
+      },
+      options: ['tiny', 'small', 'medium', 'large']
+    }
+  }
 };
 
 export const Standard = (args) => <Avatar {...args} />;
@@ -53,9 +61,19 @@ export const Large = (args) => (
     <Avatar loading size="large" />
     <Avatar size="large" username="Tom Coleman" />
     <Avatar
-      size="large"
+      size={args.size}
       username="Tom Coleman"
       src="https://avatars2.githubusercontent.com/u/132554"
     />
   </div>
 );
+
+const Template = args => <Avatar {...args}/>
+
+export const Controls = Template.bind({})
+Controls.args = {
+  loading: false,
+  size: 'tiny',
+  username: 'Daniel Test',
+  src: 'https://avatars2.githubusercontent.com/u/263385'
+} 
